@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="es-PE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Espacio para Empresarios · Perú Sistemas Pro</title>
+<meta name="description" content="Estamos construyendo el Espacio para Empresarios de Perú Sistemas Pro. Mientras tanto, estas herramientas ya están listas para tu negocio.">
+<meta name="theme-color" content="#15100b">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap">
+<style>
+/* Mismo lenguaje que el Club (tema Sepia): espresso calido, nunca blanco puro. */
+:root {
+  --bg: #15100b; --s1: #1f1812; --s2: #2a2018; --line: #3f3125;
+  --fg: #f3eadf; --fg2: #dccab4; --muted: #a8957f;
+  --cobre: #f09a3e; --turquesa: #5fb9d6; --salvia: #9bd17a; --err: #f0806a;
+  --display: "Archivo", "Arial Narrow", system-ui, sans-serif;
+  --sans: "IBM Plex Sans", "Segoe UI", system-ui, sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); }
+body { color: var(--fg); font: 16px/1.55 var(--sans); -webkit-font-smoothing: antialiased;
+  background: radial-gradient(70% 45% at 90% 0%, rgba(240, 154, 62, .16), transparent 70%),
+              repeating-linear-gradient(0deg, rgba(243, 234, 223, .018) 0 1px, transparent 1px 28px), var(--bg); min-height: 100vh; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--cobre); outline-offset: 3px; }
+.wrap { max-width: 1060px; margin-inline: auto; padding-inline: 20px; padding-block: clamp(36px, 7vw, 80px) 40px; display: grid; gap: 40px; }
+
+header .k { font: 700 13px var(--sans); letter-spacing: .16em; text-transform: uppercase; color: var(--cobre); }
+header h1 { margin: 10px 0 14px; font: 900 clamp(44px, 8vw, 88px)/.9 var(--display); font-stretch: 72%; text-transform: uppercase;
+  letter-spacing: -.01em; text-wrap: balance; }
+header h1 i { font-style: normal; color: var(--cobre); }
+header p { margin: 0; color: var(--fg2); font-size: 19px; max-width: 46ch; }
+
+.productos { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+.producto { --c: var(--cobre); display: grid; gap: 8px; align-content: start; padding: 22px; border-radius: 18px; text-decoration: none;
+  background: linear-gradient(150deg, color-mix(in srgb, var(--c) 20%, var(--s1)), var(--s1) 65%);
+  border: 1px solid color-mix(in srgb, var(--c) 40%, var(--line)); transition: transform .22s, box-shadow .22s, border-color .22s; }
+.producto.turquesa { --c: var(--turquesa); } .producto.salvia { --c: var(--salvia); }
+.producto .k { font: 700 12px var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--c); }
+.producto h2 { margin: 0; font: 800 30px/1.05 var(--display); font-stretch: 82%; }
+.producto .que { margin: 0; color: var(--fg); font-weight: 600; }
+.producto .por { margin: 0; color: var(--muted); }
+.producto .ir { margin-top: 6px; color: var(--c); font-weight: 700; }
+.producto .ir i { font-style: normal; display: inline-block; transition: transform .2s; }
+.producto:hover, .producto:focus-visible { transform: translateY(-5px); border-color: var(--c);
+  box-shadow: 0 22px 50px -14px color-mix(in srgb, var(--c) 55%, transparent); }
+.producto:hover .ir i { transform: translate(3px, -3px); }
+
+.aviso { border: 1px dashed var(--line); border-radius: 18px; padding: clamp(20px, 3vw, 28px); background: var(--s1);
+  display: grid; grid-template-columns: minmax(0, .8fr) minmax(0, 1.2fr); gap: 24px; align-items: start; }
+.aviso h2 { margin: 0 0 6px; font: 800 26px/1.1 var(--display); font-stretch: 85%; }
+.aviso .op { color: var(--muted); margin: 0; }
+form { display: grid; gap: 12px; }
+.campos { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+label.c { display: grid; gap: 6px; color: var(--fg2); font-weight: 600; font-size: 14px; }
+input[type=text], input[type=email], input[type=tel] { background: var(--bg); color: var(--fg); border: 1px solid var(--line); border-radius: 12px;
+  padding: 13px 14px; font: 500 16px var(--sans); width: 100%; }
+input:focus { outline: none; border-color: var(--cobre); box-shadow: 0 0 0 4px rgba(240, 154, 62, .16); }
+.check { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; color: var(--fg2); font-size: 14px; cursor: pointer; }
+.check input { width: 18px; height: 18px; margin-top: 2px; accent-color: var(--cobre); }
+button { justify-self: start; border: 0; border-radius: 999px; padding: 13px 22px; font: 700 16px var(--sans); cursor: pointer;
+  background: var(--cobre); color: #1a110a; transition: transform .2s, box-shadow .2s; }
+button:hover { transform: translateY(-2px); box-shadow: 0 12px 30px -8px rgba(240, 154, 62, .7); }
+button[disabled] { opacity: .55; cursor: wait; transform: none; }
+.msg { min-height: 1.4em; margin: 0; font-weight: 600; }
+.msg.ok { color: var(--salvia); } .msg.err { color: var(--err); }
+.hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+footer { color: var(--muted); font-size: 14px; }
+
+@media (max-width: 860px) { .productos { grid-template-columns: 1fr; } .aviso { grid-template-columns: 1fr; } }
+@media (max-width: 520px) { .campos { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+</head>
+<body>
+<main class="wrap">
+  <header>
+    <span class="k">Perú Sistemas Pro</span>
+    <h1>Espacio para <i>Empresarios</i></h1>
+    <p>Estamos construyendo tu espacio. Mientras tanto, estas herramientas ya están listas para ti:</p>
+  </header>
+
+  <section class="productos" aria-label="Herramientas listas para tu negocio">
+    {% for p in productos %}
+    <a class="producto {{ p.color }}" href="{{ p.url }}" target="_blank" rel="noopener">
+      <span class="k">Disponible</span>
+      <h2>{{ p.nombre }}</h2>
+      <p class="que">{{ p.que }}</p>
+      <p class="por">{{ p.por }}</p>
+      <span class="ir">Conocer {{ p.nombre }} <i>↗</i></span>
+    </a>
+    {% endfor %}
+  </section>
+
+  <section class="aviso" aria-label="Avísame cuando esté listo">
+    <div>
+      <h2>¿Te avisamos cuando esté listo?</h2>
+      <p class="op">Es opcional. Déjanos tu WhatsApp o tu correo (o ambos) y te escribimos solo para eso.</p>
+    </div>
+    <form id="fAviso" novalidate>
+      <div class="campos">
+        <label class="c" for="whatsapp">WhatsApp
+          <input id="whatsapp" type="tel" inputmode="numeric" maxlength="12" autocomplete="tel" placeholder="9XXXXXXXX"></label>
+        <label class="c" for="correo">Correo
+          <input id="correo" type="email" autocomplete="email" placeholder="tu@empresa.pe"></label>
+      </div>
+      <div class="hp" aria-hidden="true"><label for="empresa_web">No llenar</label><input id="empresa_web" type="text" tabindex="-1" autocomplete="off"></div>
+      <label class="check" for="consent"><input type="checkbox" id="consent">
+        <span>Autorizo a Perú Sistemas Pro a usar mi WhatsApp y/o correo solo para avisarme cuando el Espacio para Empresarios esté listo (Ley 29733). Puedo pedir que lo borren cuando quiera.</span></label>
+      <button type="submit" id="btn">Avísame</button>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    </form>
+  </section>
+
+  <footer>© Perú Sistemas Pro</footer>
+</main>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const ORIGEN = {{ origen|tojson }};
+  $("fAviso").addEventListener("submit", async e => {
+    e.preventDefault();
+    const msg = $("msg"), btn = $("btn");
+    const whatsapp = $("whatsapp").value.trim(), correo = $("correo").value.trim();
+    if (!whatsapp && !correo) { msg.className = "msg err"; msg.textContent = "Déjanos al menos tu WhatsApp o tu correo."; return; }
+    if (!$("consent").checked) { msg.className = "msg err"; msg.textContent = "Marca la autorización para poder avisarte."; return; }
+    btn.disabled = true; msg.className = "msg"; msg.textContent = "Guardando…";
+    try {
+      const r = await fetch("/api/aviso", { method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ whatsapp, correo, consentimiento: true, empresa_web: $("empresa_web").value, origen: ORIGEN }) });
+      const d = await r.json().catch(() => ({}));
+      if (!r.ok || !d.ok) throw new Error(d.error || "No pudimos guardar tu aviso. Intenta de nuevo.");
+      msg.className = "msg ok"; msg.textContent = d.mensaje || "¡Listo! Te avisaremos.";
+      $("fAviso").querySelectorAll("input, button").forEach(x => x.disabled = true);
+    } catch (err) { msg.className = "msg err"; msg.textContent = err.message; btn.disabled = false; }
+  });
+})();
+</script>
+</body>
+</html>
